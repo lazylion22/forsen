@@ -2,6 +2,7 @@
       google.charts.setOnLoadCallback(drawChart);
       var mute = 0
       var audio = new Audio('notify.mp3');
+      
       function drawChart() {
 
         var data = new google.visualization.DataTable();
@@ -74,14 +75,14 @@
             var notify= document.getElementById('textbox').value
 
 
-            // console.log(notify)
+            console.log(notify!="")
             // console.log(per)
             // console.log(notify < per)
-              if(notify < per){
-                if(mute==0){
+              if(notify < per && notify !=""  ){
+                
                   
                   audio.play();
-                }
+                
                 
                 // console.log("nice!")
               
