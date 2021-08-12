@@ -1,6 +1,7 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
-
+      var mute = 0
+      var audio = new Audio('notify.mp3');
       function drawChart() {
 
         var data = new google.visualization.DataTable();
@@ -41,12 +42,14 @@
           
           
         // }
+        var per = 0
         async function fetchData() {
 
         
           const res = await fetch('https://forsenjk-default-rtdb.firebaseio.com/forsen/last.json')
 
           const jfile = await res.json()
+          per = jfile.percent
           data.addRows([[ new Date(parseInt(jfile.mstime)),parseInt(jfile.percent)]])
           chart.draw(data,options);
 
@@ -66,10 +69,38 @@
           var x = setInterval(function() {
             bar.set(0)
             bar.animate(1.0);
+            
             fetchData()
-            console.log("ok")
+            var notify= document.getElementById('textbox').value
+
+
+            // console.log(notify)
+            // console.log(per)
+            // console.log(notify < per)
+              if(notify < per){
+                if(mute==0){
+                  
+                  audio.play();
+                }
+                
+                // console.log("nice!")
+              
+            }
           }, 10000);
           fetchData()
           
           bar.animate(1.0);
+}
+var mutebutton = document.getElementById('mute');
+mutebutton.onclick = function () {
+  if(mute == 1){
+    mutebutton.innerText ="mute"
+    mute = 0
+    audio.muted = false;
+  }
+  else{
+    mutebutton.innerText ="unmute"
+    mute = 1
+    audio.muted = true;
+  }
 }
