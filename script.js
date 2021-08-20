@@ -24,6 +24,7 @@ function drawChart() {
     width: 1200,
     height: 500,
     focusTarget: 'category',
+    crosshair: { orientation: 'vertical', trigger: 'focus' },
     hAxis: {
       format: 'HH:mm:ss',
       gridlines: { count: 10 }
