@@ -9,7 +9,7 @@ var showData1 = 1
 function capStr(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-document.title = capStr(streamer) + " Jump King"
+document.title = "doubters?"
 
 function drawChart() {
 
