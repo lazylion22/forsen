@@ -65,17 +65,5 @@ function drawChart() {
     // Number from 0.0 to 1.0
 
 
-    bar.animate(1.0);
-}
-var mutebutton = document.getElementById('mute');
-mutebutton.onclick = function() {
-    if (mute == 1) {
-        mutebutton.innerText = "mute"
-        mute = 0
-        audio.muted = false;
-    } else {
-        mutebutton.innerText = "unmute"
-        mute = 1
-        audio.muted = true;
-    }
+
 }
